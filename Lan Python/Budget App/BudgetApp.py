@@ -25,10 +25,11 @@ class Category:
         for i in self.ledger:
             self.balance += i['Amount']
         return self.balance
+    
     def transfer(self, amount, category):
         if self.check_funds(amount):
-            self.withdraw(amount, "Transfer to" + category.name)
-            category.deposit(amount, "Transfer from" + self.name)
+            self.withdraw(amount, "Transfer to " + category.name)
+            category.deposit(amount, "Transfer from " + self.name)
             return True
         else:
             return False
@@ -102,9 +103,16 @@ if __name__ == "__main__":
     entertainment.deposit(500, "Initial deposit")
     entertainment.withdraw(30, "Movie")
     
+    food.transfer(100, entertainment)  # Transfer to the actual entertainment object
+    food.get_balance()
+    entertainment.get_balance()
+    
     shopping = Category("Shopping")
     shopping.deposit(800, "Initial deposit")
     shopping.withdraw(100, "Clothes")
+    shopping.get_balance()
+    
+    print(f"Check funds result: {shopping.check_funds(1050)}")  # Should print: False
 
     
     print(food)
