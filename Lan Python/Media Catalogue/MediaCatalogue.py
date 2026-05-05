@@ -28,13 +28,29 @@ class MediaCatalogue:
             raise ValueError("Media item must be an instance of Movie or TVSeries.")
         self.items.append(media_item)
         
+    def get_movies(self):
+        return [item for item in self.items if type(item) is Movie]
+    
+    def get_tv_series(self):
+        return [item for item in self.items if type(item) is TVSeries]
+        
     def __str__(self):
         if not self.items:
             return "Media Catalogue is empty."
+        
+        movies = self.get_movies()
+        series = self.get_tv_series()
+        
         result = f"Media Catalogue ({len(self.items)} items): \n\n"
-        for idx, item in enumerate(self.items, start = 1):
-            result += f"{idx}. {item}\n"
-        return result
+        if len(movies) != 0:
+            result += "=== MOVIES ===\n" 
+            for idx, item in enumerate(movies, start = 1):
+                result += f"{idx}. {item}\n"
+        if len(series)!=0:
+            result += "\n=== TV SERIES ===\n"
+            for i, item in enumerate(series, 1):
+                result += f"{i}. {item}\n"
+            return result
 
 catalogue = MediaCatalogue()
 
@@ -58,6 +74,10 @@ try:
     catalogue.add(series1)
     series2 = TVSeries("Game of Thrones", 2011, "David Benioff, D.B. Weiss", 57, 8, 73)
     catalogue.add(series2)
+    movie1 = Movie("Inception", 2010, "Christopher Nolan", 148)
+    movie2 = Movie("The Matrix", 1999, "Lana Wachowski, Lilly Wachowski", 136)
+    catalogue.add(movie1)
+    catalogue.add(movie2)
     print(catalogue)
    
     
@@ -66,16 +86,7 @@ except ValueError as e:
         
     
 
-try:    
-    movie1 = Movie("Inception", 2010, "Christopher Nolan", 148)
-    movie2 = Movie("The Matrix", 1999, "Lana Wachowski, Lilly Wachowski", 136)
-    catalogue.add(movie1)
-    catalogue.add(movie2)
-    print(catalogue)
-    
-except ValueError as e:
-    print(f"Validation Error: {e}")
-    
+
 
 
     
