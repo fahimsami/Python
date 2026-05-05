@@ -1,3 +1,9 @@
+class MediaError(Exception):
+    """Custom Exception for media-related errors."""
+    def __init__(self, message, obj):
+        super().__init__(message)
+        self.obj = obj
+
 class Movie:
     """Parent class representing a movie."""
     def __init__(self, title, year, director, duration):
@@ -25,7 +31,7 @@ class MediaCatalogue:
         
     def add(self, media_item):
         if not isinstance(media_item, (Movie, TVSeries)):
-            raise ValueError("Media item must be an instance of Movie or TVSeries.")
+            raise MediaError("Media item must be an instance of Movie or TVSeries.", media_item)
         self.items.append(media_item)
         
     def get_movies(self):
@@ -68,6 +74,7 @@ class TVSeries(Movie):
         
     def __str__ (self):
         return f"{self.title} ({self.year}) - {self.seasons} seasons, {self.total_episodes} episodes, duration per episode: {self.duration} mins, {self.director}"
+    
         
 try:
     series1 = TVSeries("Breaking Bad", 2008, "Vince Gilligan", 47, 5, 62)
@@ -80,13 +87,15 @@ try:
     catalogue.add(movie2)
     print(catalogue)
    
-    
 except ValueError as e:
     print(f"Validation Error: {e}")
-        
+except MediaError as e:
+    print(f"Media Error : {e}")    
+    print(f"Unable to add {e.obj} : {type(e.obj)}")
     
 
 
+    
 
 
     
