@@ -52,6 +52,9 @@ class TVSeries(Movie):
         
     def __str__ (self):
         return f"{self.title} ({self.year}) - {self.seasons} seasons, {self.total_episodes} episodes, duration per episode: {self.duration} mins, {self.director}"
+    
+class MediaError(Exception):
+    """Custom Exception for media-related errors."""
         
 try:
     series1 = TVSeries("Breaking Bad", 2008, "Vince Gilligan", 47, 5, 62)
