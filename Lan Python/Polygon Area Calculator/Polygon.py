@@ -73,7 +73,7 @@ class Square(Rectangle):
 
 
 if __name__ == '__main__':        
-        rect = Rectangle(10, 5)
+        rect = Rectangle(15, 10)
         print(rect.get_area())
         rect.set_height(3)
         print(rect.get_perimeter())
@@ -82,12 +82,12 @@ if __name__ == '__main__':
        
         sq = Square(9)
         print(sq.get_area())
-        sq.set_side(4)
+        sq.set_side(5)
         print(sq.get_diagonal())
         print(sq)
         print(sq.get_picture())   
 
         rect.set_height(8)
         rect.set_width(16)
-        print(rect.get_amount_inside(sq))     
+        print(rect.get_amount_inside(sq))    
         
