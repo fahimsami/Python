@@ -3,8 +3,6 @@ import random
 import argparse
 from unicodedata import name
 
-print("Welcome to the Number Guessing Game!".center(50, "="))
-
 parser = argparse.ArgumentParser(description = "A simple number guessing game")
 parser.add_argument("--name", type = str, help = "Enter your name", required = True, default = "Player")
 args = parser.parse_args()
@@ -14,6 +12,7 @@ computer_win = 0
 game_count = 0
 
 def guess_number(name):
+    print("Welcome to the Number Guessing Game!".center(50, "="))
     print(f"Hello, {name}! Let's start the game.")
     print("I have selected a number between 1 and 3. Can you guess it?")
     
@@ -59,8 +58,7 @@ def display_score(player_win, game_count):
     winnning_percentage = (player_win/game_count)*100
     print(f"Your winning percentage : {winnning_percentage}%")
     return winnning_percentage
-    
-if __name__ == "__main__":
+def main():
     while True:
         user_guess = guess_number(args.name)
         computer_number = computer_guess()
@@ -68,6 +66,10 @@ if __name__ == "__main__":
         score = display_score(player_win, game_count)
         if not play_again():
             print("Thanks for playinng! Goodbye!")
-            break
+            break\
+                
+if __name__ == "__main__":
+    main()
+        
         
     
