@@ -11,7 +11,7 @@ player_win = 0
 computer_win = 0
 game_count = 0
 
-def guess_number(name):
+def guess_number(name = "Player"): 
     print("Welcome to the Number Guessing Game!".center(50, "="))
     print(f"Hello, {name}! Let's start the game.")
     print("I have selected a number between 1 and 3. Can you guess it?")
@@ -56,7 +56,7 @@ def play_again():
     
 def display_score(player_win, game_count):
     winnning_percentage = (player_win/game_count)*100
-    print(f"Your winning percentage : {winnning_percentage}%")
+    print(f"Your winning percentage : {winnning_percentage:.2f}%")
     return winnning_percentage
 def main():
     while True:
@@ -66,7 +66,7 @@ def main():
         score = display_score(player_win, game_count)
         if not play_again():
             print("Thanks for playinng! Goodbye!")
-            break\
+            break
                 
 if __name__ == "__main__":
     main()

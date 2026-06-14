@@ -54,7 +54,7 @@ def display_score(user_choice, computer_choice, result):
     print(f"Total games played : {count}")
     print(f"Your score : {user_win} | Computer score : {computer_win}")
     percentage_win = percentage(user_win, count)
-    print(f"Your winning percentage : {percentage_win}%")
+    print(f"Your winning percentage : {percentage_win:.2f}%")
 
     return count, user_win, computer_win
 
