@@ -14,5 +14,6 @@ def main():
             break
         else:
             print("Invalid choice. Please select 1, 2 or X to exit.")
+
 if __name__ == "__main__":
     main()
